@@ -4,7 +4,7 @@ export default function SuccessToast({ isShowToast }) {
 	return (
 		<div aria-live="assertive">
 			{isShowToast ? (
-				<div className="absolute top-0 inset-x-5 my-5 text-theme-green-200 bg-theme-gray-900 p-5 rounded-lg sm:max-w-[500px] sm:mx-auto">
+				<div className="fixed top-0 inset-x-5 my-5 text-theme-green-200 bg-theme-gray-900 p-5 rounded-lg sm:max-w-[500px] sm:mx-auto">
 					<p className="font-semibold pt-1 pb-2">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
