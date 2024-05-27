@@ -42,26 +42,25 @@ export default function ContactForm() {
 
 	return (
 		<div className="bg-white rounded-xl p-5 md:w-[750px] md:p-8 text-theme-gray-900 ">
-			<h1 id="form-title" className="text-2xl font-bold mb-5 md:text-3xl">
+			<h1 id="form-title" className="text-2xl font-bold mb-2 md:text-3xl">
 				Contact Us
 			</h1>
-
+			<p id="form-description" className="text-theme-green-600 mb-5">
+				Required fields are marked with an asterisk (*).
+			</p>
 			<form
 				className="space-y-5 "
 				aria-labelledby="form-title"
+				aria-describedby="form-description"
 				onSubmit={handleSubmit(onSubmit)}
 			>
 				<div className="space-y-5 md:grid md:grid-cols-2 md:gap-5 md:space-y-0">
 					<div className="flex flex-col gap-2">
-						<label htmlFor="first-name">
-							First Name
-							<span className="text-theme-green-600 ml-2" aria-hidden>
-								*
-							</span>
-						</label>
+						<label htmlFor="first-name">First Name *</label>
 						<input
 							type="text"
 							id="first-name"
+							placeholder="John"
 							aria-required
 							aria-invalid={errors.firstName ? "true" : "false"}
 							aria-describedby="first-name-error"
@@ -75,15 +74,11 @@ export default function ContactForm() {
 						)}
 					</div>
 					<div className="flex flex-col gap-2">
-						<label htmlFor="last-name">
-							Last Name
-							<span className="text-theme-green-600 ml-2" aria-hidden>
-								*
-							</span>
-						</label>
+						<label htmlFor="last-name">Last Name *</label>
 						<input
 							type="text"
 							id="last-name"
+							placeholder="Doe"
 							{...register("lastName")}
 							aria-required
 							aria-invalid={errors.lastName ? "true" : "false"}
@@ -98,15 +93,11 @@ export default function ContactForm() {
 					</div>
 				</div>
 				<div className="flex flex-col gap-2">
-					<label htmlFor="email">
-						Email Address
-						<span className="text-theme-green-600 ml-2" aria-hidden>
-							*
-						</span>
-					</label>
+					<label htmlFor="email">Email Address *</label>
 					<input
 						type="email"
 						id="email"
+						placeholder="john.doe@gmail.com"
 						{...register("emailAddress")}
 						aria-required
 						aria-invalid={errors.emailAddress ? "true" : "false"}
@@ -120,13 +111,8 @@ export default function ContactForm() {
 					)}
 				</div>
 				<fieldset>
-					<legend className="inline-block mb-3">
-						Query Type
-						<span className="text-theme-green-600 ml-2" aria-hidden>
-							*
-						</span>
-					</legend>
-					<div className="md:flex md:gap-5 space-y-5 md:space-y-0 mb-3">
+					<legend className="inline-block mb-3">Query Type *</legend>
+					<div className="md:flex md:gap-5 space-y-5 md:space-y-0">
 						<label
 							htmlFor="general-enquiry"
 							className="w-full inline-block px-5 py-3 border border-theme-gray-900 rounded-lg space-x-3 cursor-pointer focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-theme-green-600 focus-within:border-theme-green-600 has-[:checked]:bg-theme-green-200 has-[:checked]:border-theme-green-600"
@@ -162,22 +148,21 @@ export default function ContactForm() {
 						</label>
 					</div>
 					{errors.queryType && (
-						<span id="query-type-error" className="text-theme-red-500">
+						<span
+							id="query-type-error"
+							className="text-theme-red-500 mt-2 inline-block"
+						>
 							{errors.queryType.message}
 						</span>
 					)}
 				</fieldset>
 				<div className="flex flex-col gap-2">
-					<label htmlFor="message">
-						Message
-						<span className="text-theme-green-600 ml-2" aria-hidden>
-							*
-						</span>
-					</label>
+					<label htmlFor="message">Message *</label>
 					<textarea
 						id="message"
 						{...register("message")}
 						rows="4"
+						placeholder="Hello! I would like to connect with you!"
 						aria-required
 						aria-invalid={errors.message ? "true" : "false"}
 						aria-describedby="message-error"
@@ -201,10 +186,7 @@ export default function ContactForm() {
 							className="focus:ring-theme-green-600 focus:text-theme-green-600 checked:text-theme-green-600 cursor-pointer"
 						/>
 						<label htmlFor="consent" className="cursor-pointer">
-							I consent to being contacted by the team
-							<span className="text-theme-green-600 ml-2" aria-hidden>
-								*
-							</span>
+							I consent to being contacted by the team *
 						</label>
 					</div>
 					{errors.consent && (
